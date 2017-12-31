@@ -34,7 +34,7 @@ myApp.service('UserService', function($http, $location){
     console.log('getlyrics');
     $http.get('/user/lyrics').then(function (response) {
       console.log('lyrics are working');
-      console.log(response);
+      console.log(response.data);
       
       self.songObject.data = response.data;
       
