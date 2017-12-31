@@ -3,7 +3,19 @@ myApp.service('UserService', function($http, $location){
   var self = this;
   self.userObject = {};
   self.songObject = {};
+  function wordFreq(string) {
+    var words = string.replace(/[.]/g, '').split(/\s/);
+    var freqMap = {};
+    words.forEach(function (w) {
+      if (!freqMap[w]) {
+        freqMap[w] = 0;
+      }
+      freqMap[w] += 1;
+    });
 
+    return freqMap;
+  }
+  
   self.getuser = function(){
     console.log('UserService -- getuser');
     $http.get('/user').then(function(response) {
@@ -36,7 +48,13 @@ myApp.service('UserService', function($http, $location){
       console.log('lyrics are working');
       console.log(response.data);
       
-      self.songObject.data = response.data;
+
+      var freq = wordFreq(response.data[0].lyrics.lyrics);
+
+      Object.keys(freq).sort().forEach(function (word) {
+        console.log("count of " + word + " is " + freq[word]);
+        
+      });
       
     });
 
