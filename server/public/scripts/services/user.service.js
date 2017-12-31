@@ -2,6 +2,7 @@ myApp.service('UserService', function($http, $location){
   console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
+  self.songObject = {};
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -27,5 +28,17 @@ myApp.service('UserService', function($http, $location){
       console.log('UserService -- logout -- logged out');
       $location.path("/home");
     });
+  },
+
+  self.getLyrics = function(){
+    console.log('getlyrics');
+    $http.get('/user/lyrics').then(function (response) {
+      console.log('lyrics are working');
+      console.log(response);
+      
+      self.songObject.data = response.data;
+      
+    });
+
   }
 });
