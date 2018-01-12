@@ -3,17 +3,20 @@ myApp.service('UserService', function($http, $location){
   var self = this;
   self.userObject = {};
   self.songObject = {};
+
+
+  // function that removes break
   function wordFreq(string) {
     var words = string.replace(/[.]/g, '').split(/\s/);
-    var freqMap = {};
-    words.forEach(function (w) {
-      if (!freqMap[w]) {
-        freqMap[w] = 0;
+    var freqLyric = {};
+    words.forEach(function (i) {
+      if (!freqLyric[i]) {
+        freqLyric[i] = 0;
       }
-      freqMap[w] += 1;
+      freqLyric[i] += 1;
     });
 
-    return freqMap;
+    return freqLyric;
   }
   
   self.getuser = function(){
