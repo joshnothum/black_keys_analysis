@@ -9,11 +9,11 @@ myApp.service('UserService', function($http, $location){
   function wordFreq(string) {
     var words = string.replace(/[.]/g, '').split(/\s/);
     var freqLyric = {};
-    words.forEach(function (i) {
-      if (!freqLyric[i]) {
-        freqLyric[i] = 0;
+    words.forEach(function (lyric) {
+      if (!freqLyric[lyric]) {
+        freqLyric[lyric] = 0;
       }
-      freqLyric[i] += 1;
+      freqLyric[lyric] += 1;
     });
 
     return freqLyric;
@@ -45,19 +45,26 @@ myApp.service('UserService', function($http, $location){
     });
   },
 
+// get request for lyrics
   self.getLyrics = function(){
     console.log('getlyrics');
     $http.get('/user/lyrics').then(function (response) {
       console.log('lyrics are working');
-      console.log(response.data);
+      
+      var freq = wordFreq(response.data[0].lyrics.lyrics);
+      self.songObject.count = freq;
+      console.log(self.songObject.count);
       
 
-      var freq = wordFreq(response.data[0].lyrics.lyrics);
 
-      Object.keys(freq).sort().forEach(function (word) {
-        console.log("count of " + word + " is " + freq[word]);
+      
+      
+// sorts each word and applies a count to it
+      // Object.keys(freq).sort().forEach(function (word) {
+      //   console.log("count of " + word + " is " + freq[word]);
         
-      });
+        
+      // });
       
     });
 
