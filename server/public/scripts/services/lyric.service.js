@@ -2,8 +2,7 @@ myApp.service('LyricService', function ($http, $location) {
     let self = this;
     self.black = [];
     self.green = [];
-    self.topTen =[];
-
+    self.topTen = [];
     //function removes escape characters from lyrics and counts word occurence
     function wordFreq(string) {
         let words = string.toLowerCase().replace(/[.]/g, '').split(/\s/);
@@ -11,14 +10,14 @@ myApp.service('LyricService', function ($http, $location) {
         words.forEach(function (lyric) {
             console.log("lyric", lyric);
             //check for two character or less
-            if(lyric.length <= 2){
+            if (lyric.length <= 2) {
             }
-            else{
-             if (!freqLyric[lyric]) {
-                freqLyric[lyric] = 0;
+            else {
+                if (!freqLyric[lyric]) {
+                    freqLyric[lyric] = 0;
+                }
+                freqLyric[lyric] += 1;
             }
-            freqLyric[lyric] += 1;
-        }
         });
         return freqLyric;
     }
@@ -31,14 +30,6 @@ myApp.service('LyricService', function ($http, $location) {
                 //push each word occurence count into array for chart data in controller
                 self.green.push(freq[word]);
             });
-            // for(let i =0; i< self.green.length; i++){
-            //     console.log(self.green);
-                
-            //     let max = Math.max(parseInt(self.green));
-            //     console.log(max);
-               
-                
-            // }
             return self.black;
         });
     };

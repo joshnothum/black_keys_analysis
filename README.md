@@ -4,18 +4,19 @@ Lyrical analysis of The Black Keys.
 
 ## Built With
 
-List technologies and frameworks here
+AngularJS, Chart.js
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+NPM Install
 
 ### Prerequisites
 
 Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
+- [Chart.js](http//www.chartjs.org/docs/latest/)
+- [Bulma](http//www.chartjs.org/docs/latest/)
 
 
 ### Installing
@@ -42,14 +43,14 @@ Link to a read-only version of your scope document or other relevant documentati
 
 High level list of items completed.
 
-- [x] Feature a
-- [x] Feature b
+- [x] Lyrics are sorted and counted
+- [x] Lyrics are displayed using Chart.js
 
 ### Next Steps
 
 Features that you would like to add at some point in the future.
 
-- [ ] Feature c
+- [ ] Add supplemental information with SongGenius API
 
 ## Deployment
 
@@ -57,7 +58,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* Name of author(s)
+* Josh Nothum
 
 
 ## Acknowledgments
