@@ -59,7 +59,7 @@ myApp.service('UserService', function ($http, $location) {
 
       // sorts each word and applies a count to it
       Object.keys(freq).sort().forEach(function (word) {
-        console.log("count of " + word + " is " + freq[word]);
+        // console.log("count of " + word + " is " + freq[word]);
 
         self.black.push(word);
         self.green.push(freq[word]);

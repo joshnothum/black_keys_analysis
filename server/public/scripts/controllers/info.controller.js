@@ -4,14 +4,19 @@ myApp.controller('InfoController', function(UserService) {
   vm.userService = UserService;
   vm.songInfo = UserService.songObject;
   let ctx = "myChart";
+  let barlength = UserService.black.length;
+  let colorsArray = [];
+
 
   vm.getLyrics = function () {
     UserService.getLyrics().then(function(){
-      console.log(UserService.black);
       
+      UserService.black.forEach(function (words) {
+        let getColor = getRandomColor();
+        colorsArray.push(getColor);
+      });
+      console.log(colorsArray);
     });
-    
-   
     
     let myChart = new Chart(ctx, {
       type: 'bar',
@@ -20,14 +25,7 @@ myApp.controller('InfoController', function(UserService) {
         datasets: [{
           label: '# of Votes',
           data: UserService.green,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
+          backgroundColor: colorsArray,
           borderColor: [
             'rgba(255,99,132,1)',
             'rgba(54, 162, 235, 1)',
@@ -52,5 +50,14 @@ myApp.controller('InfoController', function(UserService) {
     
   };
 
-  
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    console.log(color);
+    
+    return color;
+  }
 });
