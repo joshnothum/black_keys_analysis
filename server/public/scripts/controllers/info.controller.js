@@ -13,7 +13,6 @@ myApp.controller('InfoController', function(LyricService) {
         let getColor = getRandomColor();
         colorsArray.push(getColor);
       });
-      console.log(colorsArray);
     });
     
     let myChart = new Chart(ctx, {
