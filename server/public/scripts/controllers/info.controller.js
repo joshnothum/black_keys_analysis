@@ -6,15 +6,20 @@ myApp.controller('InfoController', function(UserService) {
   let ctx = "myChart";
 
   vm.getLyrics = function () {
-    UserService.getLyrics();
+    UserService.getLyrics().then(function(){
+      console.log(UserService.black);
+      
+    });
+    
+   
     
     let myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: Object.keys(UserService.songObject),
+        labels: UserService.black,
         datasets: [{
           label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          data: UserService.green,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
