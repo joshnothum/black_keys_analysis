@@ -8,7 +8,7 @@ myApp.service('LyricService', function ($http, $location) {
         let freqLyric = {};
         words.forEach(function (lyric) {
             console.log("lyric", lyric);
-            if(lyric==""|| lyric.length <= 2){
+            if(lyric.length <= 2){
                 
             }
             
