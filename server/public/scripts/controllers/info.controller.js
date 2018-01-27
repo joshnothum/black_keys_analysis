@@ -4,8 +4,7 @@ myApp.controller('InfoController', function(UserService) {
   vm.userService = UserService;
   vm.songInfo = UserService.songObject;
   let ctx = "myChart";
-  let barlength = UserService.black.length;
-  let colorsArray = [];
+  let colorsArray = []; // empty array to store random colors
 
 
   vm.getLyrics = function () {
@@ -23,7 +22,7 @@ myApp.controller('InfoController', function(UserService) {
       data: {
         labels: UserService.black,
         datasets: [{
-          label: '# of Votes',
+          label: 'Occurences',
           data: UserService.green,
           backgroundColor: colorsArray,
           borderColor: '#ffffff',
@@ -42,7 +41,7 @@ myApp.controller('InfoController', function(UserService) {
     });
     
   };
-
+// getRandom color creates random hex values
   function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
