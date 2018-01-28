@@ -22,7 +22,7 @@ myApp.service('LyricService', function ($http, $location) {
         return freqLyric;
     }
     self.getLyrics = function () {
-        return $http.get('/user/lyrics').then(function (response) {
+        return $http.get('/lyric/track').then(function (response) {
             let freq = wordFreq(response.data[0].lyrics.lyrics);
             Object.keys(freq).sort().forEach(function (word) {
                 //push each individual word into array for chart labels in controller

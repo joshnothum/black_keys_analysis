@@ -22,31 +22,6 @@ router.get('/', function(req, res) {
     res.send(false);
   }
 });
-
-
-
-router.get('/lyrics', function (req, res, next) {
-
-  pool.connect(function (err, client, done) {
-    if (err) {
-      console.log("Error connecting: ", err);
-      res.sendStatus(500);
-    }
-    client.query('SELECT * FROM tracks;',
-
-      function (err, result) {
-        done();
-
-        if (err) {
-          console.log("Error getting data: ", err);
-          res.sendStatus(500);
-        } else {
-          res.send(result.rows);
-          
-        }//end of else
-      });// end of if function
-  });//end of pool
-});//end of get
 // clear all server session information about this user
 router.get('/logout', function(req, res) {
   // Use passport's built-in method to log out the user
