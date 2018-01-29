@@ -37,5 +37,5 @@ app.use('/', indexRouter);
 
 // Listen //
 app.listen(port, function(){
-   console.log('Listening on port:', port);
+   console.log('thx for listening on channel:', port);
 });
