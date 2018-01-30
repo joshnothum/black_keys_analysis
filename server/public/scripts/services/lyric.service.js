@@ -21,6 +21,13 @@ myApp.service('LyricService', function ($http, $location) {
         });
         return freqLyric;
     }
+
+    // function separateLyrics (array){
+    //     for(let i = 0; i < array.length; i++ ){
+    //         wordFreq(array.data[0].lyrics);
+    //     }
+
+    // };
     self.getLyrics = function () {
         return $http.get('/lyric/track').then(function (response) {
             let freq = wordFreq(response.data[0].lyrics);
