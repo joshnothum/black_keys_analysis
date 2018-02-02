@@ -2,8 +2,9 @@ myApp.service('LyricService', function ($http, $location) {
     let self = this;
     self.black = [];
     self.green = [];
-    self.topTen = [];
-    let freqLyric = {};
+    let freqLyric ={};
+    let finalArray = [];
+
     //function removes escape characters from lyrics and counts word occurence
     function wordFreq(string) {
         let words = string.toLowerCase().replace(/[.]/g, '').split(/\s/);
@@ -19,34 +20,29 @@ myApp.service('LyricService', function ($http, $location) {
                 freqLyric[lyric] += 1;
             }
         });
-       
+       return freqLyric;
     }
+
+function sortedArray(freqLyric) {
+    finalWordsArray = Object.keys(freqLyric).map(function(lyric){
+        return {
+            word: lyric,
+            total: freqLyric[lyric]
+        };
+    });
+    finalWordsArray.sort(function(a,b){
+        return b.total - a.total;
+    });
+    return finalWordsArray;
+}
+
     self.getLyrics = function () {
         return $http.get('/lyric/track').then(function (response) {
-  
-            
    // for loop to count all the tracks in the data array. Allows count for album
-                for(let i =0; i < response.data.length; i++){
-                    wordFreq(response.data[i].lyrics);
+            for(let i =0; i < response.data.length; i++){
+                wordFreq(response.data[i].lyrics);
             }
-
-            
-            // let newThing = Object.values(freqLyric).sort().reverse();
-
-            // self.green = newThing.slice(0, 16);
-
-            // console.log(self.green);
-            // console.log(freqLyric);
-            
-            
-            
-            Object.keys(freqLyric).sort().reverse().slice(0, 16).forEach(function (word) {
-                //push each individual word into array for chart labels in controller
-                self.black.push(freqLyric);
-                //push each word occurence count into array for chart data in controller
-                self.green.push(freqLyric[word]);
-            });
-            return self.black;
+            sortedArray(freqLyric).slice(0,16);
         });
     };
 
