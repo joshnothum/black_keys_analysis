@@ -3,7 +3,12 @@ myApp.controller('InfoController', function (LyricService) {
   var vm = this;
   let ctx = "myChart";
 
+  vm.image = LyricService.art.url;
 
+vm.getAlbum = function(){
+  LyricService.getAlbum();
+
+};
   vm.getLyrics = function () {
     LyricService.getLyrics().then(function () {
     });
@@ -30,4 +35,6 @@ myApp.controller('InfoController', function (LyricService) {
       }
     });
   };
+
+  vm.getAlbum();
 });

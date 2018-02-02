@@ -4,6 +4,7 @@ myApp.service('LyricService', function ($http, $location) {
     self.chartLabels = [];
     self.chartValues = [];
     self.colorsArray = []; // empty array to store random colors
+    self.art = {};
 
     //function removes escape characters from lyrics and counts word occurence
     function wordFreq(songLyrics) {
@@ -60,6 +61,15 @@ myApp.service('LyricService', function ($http, $location) {
                 self.colorsArray.push(getRandomColor());
                 self.chartValues.push(whiteKeys[i].total);
             }
+        });
+    };
+
+    self.getAlbum = function(){
+        $http.get('/lyric/album').then(function(response){
+            self.art.url = response.data;
+            
+           
+            
         });
     };
 });
