@@ -69,7 +69,7 @@ myApp.service('LyricService', function ($http, $location) {
     //get album retrieves all album info
     self.getAlbum = function(){
         $http.get('/lyric/album').then(function(response){
-            self.album.info = response.data[1];
+            self.album.info = response.data;
             console.log('album',self.album);
             
            
