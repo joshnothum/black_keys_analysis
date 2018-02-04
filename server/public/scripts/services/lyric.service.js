@@ -47,6 +47,7 @@ myApp.service('LyricService', function ($http, $location) {
         }
         return color;
     }
+
     self.getLyrics = function () {
         return $http.get('/lyric/track').then(function (response) {
             // for loop to count all the tracks in the data array. Allows count for album

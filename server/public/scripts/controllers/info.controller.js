@@ -1,7 +1,7 @@
 myApp.controller('InfoController', function (LyricService) {
   console.log('InfoController created');
   var vm = this;
-  let ctx = "myChart";
+  
  
   vm.albumInfo = LyricService.album;
 
@@ -12,6 +12,7 @@ myApp.controller('InfoController', function (LyricService) {
   vm.getLyrics = function () {
     LyricService.getLyrics().then(function () {
     });
+    let ctx = document.getElementById("myChart").getContext('2d');
     let myChart = new Chart(ctx, {
       type: 'bar',
       data: {
