@@ -1,14 +1,13 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container u-window-box--large">
-  <p class="c-paragraph">
+<div>
+  <p>
     In Info
   </p>
-  <button class="c-button u-highest" type="button" ng-click="ic.getLyrics()">Get Lyric</button>
+  <button type="button" ng-click="ic.getLyrics()">Get Lyric</button>
 
  
   <div>
-    <canvas id="myChart" width="100" height="100"></canvas>
+    <canvas id="myChart" width="400" height="400"></canvas>
   </div>
-  <div>
-  <img src={{ic.albumInfo.info.album_art}}>
 </div>
+  <!-- <img src={{ic.albumInfo.info.album_art}}> -->

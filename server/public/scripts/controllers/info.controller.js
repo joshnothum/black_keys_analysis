@@ -25,6 +25,8 @@ myApp.controller('InfoController', function (LyricService) {
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           yAxes: [{
             ticks: {
