@@ -1,10 +1,11 @@
 myApp.service('LyricService', function ($http, $location) {
     const self = this;
     const freqLyric = {};
+    
     self.chartLabels = [];
     self.chartValues = [];
     self.colorsArray = []; // empty array to store random colors
-    self.art = {};
+    self.album = {};
 
     //function removes escape characters from lyrics and counts word occurence
     function wordFreq(songLyrics) {
@@ -66,7 +67,8 @@ myApp.service('LyricService', function ($http, $location) {
 
     self.getAlbum = function(){
         $http.get('/lyric/album').then(function(response){
-            self.art.url = response.data;
+            self.album = response.data[1];
+            console.log('album',self.album);
             
            
             

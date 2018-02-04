@@ -2,11 +2,11 @@ myApp.controller('InfoController', function (LyricService) {
   console.log('InfoController created');
   var vm = this;
   let ctx = "myChart";
-
-  vm.image = LyricService.art.url;
+  vm.albumInfo = LyricService.album;
 
 vm.getAlbum = function(){
   LyricService.getAlbum();
+  
 
 };
   vm.getLyrics = function () {
