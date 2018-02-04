@@ -4,11 +4,11 @@ myApp.controller('InfoController', function (LyricService) {
   let ctx = "myChart";
   vm.albumInfo = LyricService.album;
 
-vm.getAlbum = function(){
-  LyricService.getAlbum();
-  
+  vm.getAlbum = function () {
+    LyricService.getAlbum();
 
-};
+
+  };
   vm.getLyrics = function () {
     LyricService.getLyrics().then(function () {
     });
