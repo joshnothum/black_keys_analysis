@@ -1,6 +1,6 @@
 myApp.controller('InfoController', function (LyricService) {
   console.log('InfoController created');
-  var vm = this;
+  const vm = this;
   
  
   vm.albumInfo = LyricService.album;

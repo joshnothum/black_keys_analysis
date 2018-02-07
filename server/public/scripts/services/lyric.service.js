@@ -27,22 +27,21 @@ myApp.service('LyricService', function ($http, $location) {
     }
     //function to make an array of objects that are ordered by word occurence
     function sortedArray(freqLyric) {
-        lyricsArray = Object.keys(freqLyric).map(function (lyric) {
+      let lyricsArray = Object.keys(freqLyric).map(function (lyric) {
             //returns object
             return {
                 word: lyric,
                 total: freqLyric[lyric]
             };
-        });
-        lyricsArray.sort(function (a, b) {
+        }).sort(function (a, b) {
             return b.total - a.total;
         });
         return lyricsArray;
     }
     function getRandomColor() {
-        var letters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
+        let letters = '0123456789ABCDEF'.split('');
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;

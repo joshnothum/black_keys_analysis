@@ -1,6 +1,6 @@
 myApp.controller('LoginController', function($http, $location, UserService) {
     console.log('LoginController created');
-    var vm = this;
+    const vm = this;
     vm.user = {
       username: '',
       password: ''
