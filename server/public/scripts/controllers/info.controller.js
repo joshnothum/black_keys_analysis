@@ -12,8 +12,8 @@ myApp.controller('InfoController', function (LyricService) {
   vm.getLyrics = function () {
     LyricService.getLyrics().then(function () {
     });
-    let ctx = document.getElementById("myChart").getContext('2d');
-    let myChart = new Chart(ctx, {
+    const ctx = document.getElementById("myChart").getContext('2d');
+    const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: LyricService.chartLabels,
