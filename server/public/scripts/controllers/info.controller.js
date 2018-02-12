@@ -11,7 +11,7 @@ myApp.controller('InfoController', function (LyricService) {
   };
   vm.getLyrics = function () {
     LyricService.getLyrics().then(function () {
-    });
+
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -35,6 +35,7 @@ myApp.controller('InfoController', function (LyricService) {
           }]
         }
       }
+    });
     });
   };
 
