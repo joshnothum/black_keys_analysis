@@ -73,11 +73,11 @@ myApp.service('LyricService', function ($http, $location) {
         });
     };
 
-    self.getGenius = function () {
-        $http.get('/lyric/genius').then(function (response) {
+    // self.getGenius = function () {
+    //     $http.get('/lyric/genius').then(function (response) {
  
-            console.log('genius', response);
+    //         console.log('genius', response);
 
-        });
-    };
+    //     });
+    // };
 });
