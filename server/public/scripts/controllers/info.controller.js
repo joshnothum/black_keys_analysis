@@ -38,6 +38,10 @@ myApp.controller('InfoController', function (LyricService) {
     });
     });
   };
-
+  vm.getGenius = function () {
+    LyricService.getGenius();
+    //get album is called at the bottom of page so that it runs when the controller loads
+  };
+  
   vm.getAlbum();
 });

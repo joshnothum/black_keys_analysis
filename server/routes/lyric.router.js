@@ -5,8 +5,8 @@ var path = require('path');
 var pool = require('../modules/pool.js');
 require('dotenv').config();
 var request = require('request');
-// let TOKEN = process.env.CLIENT_ID;
-// headers = {'Authorization':'Bearer', TOKEN};
+let TOKEN = process.env.CLIENT_ID;
+let headers = {'Authorization':'Bearer', TOKEN};
 
 router.get('/track', function (req, res, next) {
 
@@ -54,15 +54,15 @@ router.get('/album', function (req, res, next) {
     });//end of pool
 });//end of get
 
-// router.get('/geniusData', function (req, res, next) {
+router.get('/genius', function (req, res, next) {
 
-//     request('https://api.genius.com/songs/1116',{headers}, function (error, response, body) {
-//         res.send(body);
+    request('https://api.genius.com/songs/1116/',{headers}, function (error, response, body) {
+        res.send(body);
 
-//         console.log("body", body);
+        console.log("body", body);
 
 
-//     });
-// });//end of get
+    });
+});//end of get
 
 module.exports = router;
