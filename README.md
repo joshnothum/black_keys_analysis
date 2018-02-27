@@ -1,10 +1,10 @@
 # Black Keys Charts
 
-Lyrical analysis of The Black Keys.
+Lyrical analysis of The Black Keys using regex and Chart.js.
 
 ## Built With
 
-AngularJS, Chart.js
+AngularJS, Chart.js, Bulma
 
 ## Getting Started
 
@@ -33,11 +33,6 @@ CREATE TABLE "users" (
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
-
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
 
 ### Completed Features
 
@@ -45,16 +40,14 @@ High level list of items completed.
 
 - [x] Lyrics are sorted and counted
 - [x] Lyrics are displayed using Chart.js
+- [ ] Filter by song
+- [ ] Filter by album
 
 ### Next Steps
 
 Features that you would like to add at some point in the future.
 
 - [ ] Add supplemental information with SongGenius API
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Authors
 
