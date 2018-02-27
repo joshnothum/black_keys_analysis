@@ -1,4 +1,4 @@
-# Black Keys Charts
+# Charts with Keys
 
 Lyrical analysis of The Black Keys using regex and Chart.js.
 
@@ -40,6 +40,8 @@ High level list of items completed.
 
 - [x] Lyrics are sorted and counted
 - [x] Lyrics are displayed using Chart.js
+- [x] Display album art to select album
+- [ ] Dropdown menu to select individual song
 - [ ] Filter by song
 - [ ] Filter by album
 
