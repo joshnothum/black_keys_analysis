@@ -1,7 +1,6 @@
 <div class="container">
   <button type="button" ng-click="ic.getLyrics()">Get Lyric</button>
-
-  <button type="button" ng-click="ic.getGenius()">Get Genius</button>
+  <section>
   <div class="columns">
     <div class="column" ng-repeat="album in ic.albumInfo.info">
       <div class="card">
@@ -12,12 +11,7 @@
         </div>
         <div class="card-content">
           <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-            <a>@bulmaio</a>.
-            <a href="#">#css</a>
-            <a href="#">#responsive</a>
-            <br>
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+     <h3>  {{album.title}}</h3>
           </div>
         </div>
 
@@ -25,6 +19,7 @@
 
     </div>
   </div>
+  </section>
   <div>
     <canvas id="myChart" width="400" height="400"></canvas>
   </div>

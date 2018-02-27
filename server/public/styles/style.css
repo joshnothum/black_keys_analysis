@@ -5,7 +5,7 @@ body, html {
   font-size: 14px;
 }
 
-.instructions .container h1 {
+.instructions h1 {
   font-size: 32px;
   font-weight: 600;
 }
@@ -18,14 +18,6 @@ body, html {
 
 #entryForm {
   margin-top: 14px;
-}
-
-#container {
-  margin-top: 10px;
-}
-
-.container p{
-  margin-top : 14px;
 }
 
 .message {
