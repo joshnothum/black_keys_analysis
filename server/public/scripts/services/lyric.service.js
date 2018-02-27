@@ -54,7 +54,6 @@ myApp.service('LyricService', function ($http, $location) {
             }
             //reduces number in chart to top 15 word occurences with slice method
             let whiteKeys = sortedArray(freqLyric).slice(0, 16);
-
             //for loop  to separtate labels and chartValues
             for (let i = 0; i < whiteKeys.length; i++) {
                 self.chartLabels.push(whiteKeys[i].word);
