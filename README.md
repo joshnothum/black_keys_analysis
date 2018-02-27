@@ -56,7 +56,6 @@ Features that you would like to add at some point in the future.
 
 * Josh Nothum
 
-
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Biz Z for some help with the logic and Prime Digital Academy for the workspace

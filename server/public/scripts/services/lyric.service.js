@@ -1,7 +1,7 @@
 myApp.service('LyricService', function ($http, $location) {
     const self = this;
     const freqLyric = {};
-    
+
     self.chartLabels = [];
     self.chartValues = [];
     self.colorsArray = []; // empty array to store random colors
@@ -18,7 +18,7 @@ myApp.service('LyricService', function ($http, $location) {
             }
             else {
                 if (!freqLyric[lyric]) {
-                    freqLyric[lyric] = 0;
+                    freqLyric[lyric] = 0; 
                 }
                 freqLyric[lyric] += 1;
             }
@@ -27,7 +27,7 @@ myApp.service('LyricService', function ($http, $location) {
     }
     //function to make an array of objects that are ordered by word occurence
     function sortedArray(freqLyric) {
-      let lyricsArray = Object.keys(freqLyric).map(function (lyric) {
+        let lyricsArray = Object.keys(freqLyric).map(function (lyric) {
             //returns object
             return {
                 word: lyric,
@@ -64,19 +64,18 @@ myApp.service('LyricService', function ($http, $location) {
     };
 
     //get album retrieves all album info
-    self.getAlbum = function(){
-        $http.get('/lyric/album').then(function(response){
+    self.getAlbum = function () {
+        $http.get('/lyric/album').then(function (response) {
             self.album.info = response.data;
-            console.log('album',self.album);
+            console.log('album', self.album);
 
         });
     };
+  /*  self.getGenius = function () {
+        $http.get('/lyric/genius').then(function (response) {
 
-    // self.getGenius = function () {
-    //     $http.get('/lyric/genius').then(function (response) {
- 
-    //         console.log('genius', response);
+            console.log('genius', response);
 
-    //     });
-    // };
+        });
+    };*/
 });
