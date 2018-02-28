@@ -1,17 +1,18 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
-var passport = require('./strategies/sql.localstrategy');
-var sessionConfig = require('./modules/session.config');
+const passport = require('./strategies/sql.localstrategy');
+const sessionConfig = require('./modules/session.config');
 
 // Route includes
-var indexRouter = require('./routes/index.router');
-var userRouter = require('./routes/user.router');
-var registerRouter = require('./routes/register.router');
-var lyricRouter = require('./routes/lyric.router');
+const indexRouter = require('./routes/index.router');
+const userRouter = require('./routes/user.router');
+const registerRouter = require('./routes/register.router');
+const lyricRouter = require('./routes/lyric.router');
+const songRouter = require('./routes/song.router');
 
-var port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use(passport.session());
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
 app.use('/lyric', lyricRouter);
+app.use('/song', songRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

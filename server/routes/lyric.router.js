@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
-var path = require('path');
-var pool = require('../modules/pool.js');
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const path = require('path');
+const pool = require('../modules/pool.js');
 require('dotenv').config();
-var request = require('request');
-let TOKEN = process.env.CLIENT_ACCESS_TOKEN;
-let headers = { 'Authorization': 'Bearer', TOKEN};
+const request = require('request');
+// const TOKEN = process.env.CLIENT_ACCESS_TOKEN;
+// const headers = { 'Authorization': 'Bearer', TOKEN};
 
 router.get('/track', function (req, res, next) {
 
