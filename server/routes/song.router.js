@@ -35,3 +35,4 @@ router.get('/song:id', function (params) {
     });
 
 });
+module.exports = router;
