@@ -1,1 +1,3 @@
-myApp.service('')
+myApp.service('SongService', function(){
+    
+})
