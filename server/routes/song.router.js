@@ -6,8 +6,10 @@ const pool = require('../modules/pool.js');
 const request = require('request');
 
 
-router.get('/song:id', function (params) {
+router.get('/:id', function (req, res) {
     let albumID = req.params.id;
+    console.log(albumID);
+    
     pool.connect(function (err, client, done) {
         if (err) {
             console.log("Error connecting in /tracks: ", err);
@@ -15,7 +17,7 @@ router.get('/song:id', function (params) {
         }
         let queryText = 'SELECT *' +
             'FROM "tracks"' +
-            'WHERE "album_id = $1"';
+            'WHERE "album_id" = $1';
         client.query(queryText, [albumID],
             function (err, result) {
                 done();
@@ -24,8 +26,8 @@ router.get('/song:id', function (params) {
                     res.sendStatus(500);
 
                 } else {
-                    console.log('results from album route', result.rows);
-                    res.sendStatus(200);
+                    console.log('results from songs from album route', result.rows);
+                    res.send(result.rows);
                 }
 
             });

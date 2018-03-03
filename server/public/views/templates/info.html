@@ -3,7 +3,7 @@
   <section>
   <div class="columns">
     <div class="column" ng-repeat="album in ic.albumInfo.info">
-      <div class="card">
+      <div class="card" ng-click="ic.getAlbumSongs(album.id)">
         <div class="card-image">
           <figure class="image is-4by3">
             <img src="{{album.album_art}}" alt="Placeholder image" />
