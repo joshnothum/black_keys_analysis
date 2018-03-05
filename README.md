@@ -30,7 +30,23 @@ CREATE TABLE "users" (
   "password" varchar(240) not null
 );
 ```
-
+```sql
+CREATE TABLE "public"."album" (
+    "id" serial,
+    "title" text,
+    "album_art" text,
+    PRIMARY KEY ("id")
+);
+```
+```sql
+CREATE TABLE "public"."tracks" (
+    "id" serial,
+    "lyrics" character varying,
+    "album_id" integer,
+    PRIMARY KEY ("id"),
+    FOREIGN KEY ("album_id") REFERENCES "public"."album"("id")
+);
+```
 ## Screen Shot
 
 <img width="1134" alt="screen shot 2018-02-27 at 1 18 30 am" src="https://user-images.githubusercontent.com/24615832/36716106-b1d12b84-1b5e-11e8-9e61-2dfde73ff7ca.png">
