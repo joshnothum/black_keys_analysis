@@ -6,7 +6,7 @@ this.getAlbumSongs = function (albumID) {
     
     $http.get('/song/'+ albumID).then(function(response){
         console.log('getAlbumSongs response', response);
-        self.albumSongs = result.rows;
+        
         
     });
 };

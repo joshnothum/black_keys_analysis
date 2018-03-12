@@ -71,11 +71,23 @@ myApp.service('LyricService', function ($http, $location) {
 
         });
     };
-  /*  self.getGenius = function () {
-        $http.get('/lyric/genius').then(function (response) {
-
-            console.log('genius', response);
-
+    this.getAlbumSongs = function (albumID) {
+        
+        
+        return $http.get('/song/'+ albumID).then(function(response){
+            console.log('getAlbumSongs response', response);
+            for (let i = 0; i < response.data.length; i++) {
+                wordFreq(response.data[i].lyrics);
+            }
+            //reduces number in chart to top 15 word occurences with slice method
+            let whiteKeys = sortedArray(freqLyric).slice(0, 16);
+            //for loop  to separtate labels and chartValues
+            for (let i = 0; i < whiteKeys.length; i++) {
+                self.chartLabels.push(whiteKeys[i].word);
+                self.colorsArray.push(getRandomColor());
+                self.chartValues.push(whiteKeys[i].total);
+            }
+            
         });
-    };*/
+    };
 });

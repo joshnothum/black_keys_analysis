@@ -45,8 +45,34 @@ myApp.controller('InfoController', function (LyricService, SongService) {
   vm.getAlbumSongs = function (albumID) {
     console.log('this is albumID',albumID);
     
-    SongService.getAlbumSongs(albumID);
-    //get album is called at the bottom of page so that it runs when the controller loads
+    LyricService.getAlbumSongs(albumID).then(function(){
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: LyricService.chartLabels,
+          datasets: [{
+            label: 'Occurences',
+            data: LyricService.chartValues,
+            backgroundColor: LyricService.colorsArray,
+            borderColor: '#ffffff',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    });
+    
   };
+  //get album is called at the bottom of page so that it runs when the controller loads
   vm.getAlbum();
 });
