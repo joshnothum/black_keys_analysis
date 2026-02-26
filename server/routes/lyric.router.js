@@ -1,69 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
-const path = require('path');
-const pool = require('../modules/pool.js');
-require('dotenv').config();
-const request = require('request');
-// const TOKEN = process.env.CLIENT_ACCESS_TOKEN;
-// const headers = { 'Authorization': 'Bearer', TOKEN};
+const pool = require('../modules/pool');
 
-router.get('/track', function (req, res, next) {
+// GET /api/lyric/track — all tracks (no lyrics payload, just metadata)
+router.get('/track', async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT id, title, album_id, bpm, time_signature, artist FROM tracks ORDER BY album_id, id'
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching tracks:', err);
+    res.sendStatus(500);
+  }
+});
 
-    pool.connect(function (err, client, done) {
-        if (err) {
-            console.log("Error connecting: ", err);
-            res.sendStatus(500);
-        }
-        client.query('SELECT * FROM tracks;',
-
-            function (err, result) {
-                done();
-
-                if (err) {
-                    console.log("Error getting data: ", err);
-                    res.sendStatus(500);
-                } else {
-                    res.send(result.rows);
-
-                }//end of else
-            });// end of if function
-    });//end of pool
-});//end of get
-router.get('/album', function (req, res, next) {
-
-    pool.connect(function (err, client, done) {
-        if (err) {
-            console.log("Error connecting: ", err);
-            res.sendStatus(500);
-        }
-        client.query('SELECT * FROM album;',
-
-            function (err, result) {
-                done();
-
-                if (err) {
-                    console.log("Error getting data: ", err);
-                    res.sendStatus(500);
-                } else {
-                    res.send(result.rows);
-                    
-                    
-                }//end of else
-            });// end of if function
-    });//end of pool
-});//end of get
-
-// router.get('/genius', function (req, res, next) {
-// console.log(headers);
-
-//     request('https://api.genius.com/songs/1116/',{headers}, function (error, response, body) {
-//         res.send(body);
-
-//         console.log("body", response);
-
-
-//     });
-// });//end of get
+// GET /api/lyric/album — all albums
+router.get('/album', async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT * FROM album ORDER BY year'
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching albums:', err);
+    res.sendStatus(500);
+  }
+});
 
 module.exports = router;

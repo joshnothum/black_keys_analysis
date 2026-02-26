@@ -1,0 +1,63 @@
+.track-list {
+  padding-top: 0.5rem;
+}
+
+.track-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.track-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+  color: var(--text-primary);
+  width: 100%;
+}
+
+.track-item:hover {
+  background: var(--surface-hover);
+}
+
+.track-item.selected {
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+.track-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.track-meta {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.bpm-badge,
+.time-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: var(--badge-bg);
+  color: var(--text-muted);
+}
+
+.empty-msg {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0.6rem;
+}
