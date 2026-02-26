@@ -1,7 +1,8 @@
-.DS_STORE
+.DS_Store
 node_modules/
 .idea/
 *.log
 *.logs
 .vscode/
 .env
+client/dist/

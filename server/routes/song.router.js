@@ -1,37 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
-const path = require('path');
-const pool = require('../modules/pool.js');
-const request = require('request');
+const pool = require('../modules/pool');
 
-
-router.get('/:id', function (req, res) {
-    let albumID = req.params.id;
-    console.log(albumID);
-    
-    pool.connect(function (err, client, done) {
-        if (err) {
-            console.log("Error connecting in /tracks: ", err);
-            res.sendStatus(500);
-        }
-        let queryText = 'SELECT *' +
-            'FROM "tracks"' +
-            'WHERE "album_id" = $1';
-        client.query(queryText, [albumID],
-            function (err, result) {
-                done();
-                if (err) {
-                    console.log('error in get song', err);
-                    res.sendStatus(500);
-
-                } else {
-                    console.log('results from songs from album route', result.rows);
-                    res.send(result.rows);
-                }
-
-            });
-    });
-
+// GET /api/song/:albumId — tracks for a given album (no lyrics)
+router.get('/:albumId', async (req, res) => {
+  const { albumId } = req.params;
+  try {
+    const { rows } = await pool.query(
+      `SELECT id, title, album_id, bpm, time_signature, artist
+       FROM tracks
+       WHERE album_id = $1
+       ORDER BY id`,
+      [albumId]
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching songs for album:', err);
+    res.sendStatus(500);
+  }
 });
+
 module.exports = router;

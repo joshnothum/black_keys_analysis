@@ -1,43 +1,29 @@
+require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 const express = require('express');
+const path = require('path');
+
+const lyricRouter   = require('./routes/lyric.router');
+const songRouter    = require('./routes/song.router');
+const analysisRouter = require('./routes/analysis.router');
+
 const app = express();
-const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5000;
 
-const passport = require('./strategies/sql.localstrategy');
-const sessionConfig = require('./modules/session.config');
+app.use(express.json());
 
-// Route includes
-const indexRouter = require('./routes/index.router');
-const userRouter = require('./routes/user.router');
-const registerRouter = require('./routes/register.router');
-const lyricRouter = require('./routes/lyric.router');
-const songRouter = require('./routes/song.router');
+// Serve React build in production
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
-const port = process.env.PORT || 5000;
+// API routes
+app.use('/api/lyric',    lyricRouter);
+app.use('/api/song',     songRouter);
+app.use('/api/analysis', analysisRouter);
 
-// Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// React catch-all — must be last
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
-// Serve back static files
-app.use(express.static('./server/public'));
-
-// Passport Session Configuration
-app.use(sessionConfig);
-
-// Start up passport sessions
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Routes
-app.use('/register', registerRouter);
-app.use('/user', userRouter);
-app.use('/lyric', lyricRouter);
-app.use('/song', songRouter);
-
-// Catch all bucket, must be last!
-app.use('/', indexRouter);
-
-// Listen //
-app.listen(port, function(){
-   console.log('thx for listening on channel:', port);
+app.listen(PORT, () => {
+  console.log(`🎵 Lyric Pulse running on port ${PORT}`);
 });
