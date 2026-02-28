@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { line, area, curveMonotoneX } from 'd3-shape';
+import './charts-shared.css';
 import './SentimentArcChart.css';
 
 const MARGIN = { top: 24, right: 20, bottom: 36, left: 48 };
@@ -94,13 +95,27 @@ export function SentimentArcChart({ verses }) {
       >
         <defs>
           {/* Green gradient: full opacity at top, fades to zero at the zero line */}
-          <linearGradient id="arc-grad-pos" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient
+            id="arc-grad-pos"
+            x1="0"
+            y1={0}
+            x2="0"
+            y2={yZero}
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0%"   stopColor="#22c55e" stopOpacity="0.5" />
             <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
           </linearGradient>
 
-          {/* Red gradient: invisible at top, deepens toward the bottom */}
-          <linearGradient id="arc-grad-neg" x1="0" y1="0" x2="0" y2="1">
+          {/* Red gradient: invisible at top (zero line), deepens toward the bottom */}
+          <linearGradient
+            id="arc-grad-neg"
+            x1="0"
+            y1={yZero}
+            x2="0"
+            y2={innerH}
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0%"   stopColor="#ef4444" stopOpacity="0" />
             <stop offset="100%" stopColor="#ef4444" stopOpacity="0.5" />
           </linearGradient>

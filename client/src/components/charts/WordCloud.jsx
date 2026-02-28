@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import cloud from 'd3-cloud';
+import './charts-shared.css';
 import './WordCloud.css';
 
 const SENTIMENT_COLORS = {
@@ -34,11 +35,13 @@ export function WordCloud({ wordFrequency }) {
   useEffect(() => {
     if (!wordFrequency?.length) return;
 
+    let cancelled = false;
+
     const counts = wordFrequency.map((w) => w.count);
     const maxCount = Math.max(...counts);
     const minCount = Math.min(...counts);
 
-    cloud()
+    const layout = cloud()
       .size([dims.width, dims.height])
       .words(
         wordFrequency.map((w) => ({
@@ -52,8 +55,13 @@ export function WordCloud({ wordFrequency }) {
       .rotate(0) // horizontal only — easier to read
       .font('system-ui, -apple-system, sans-serif')
       .fontSize((d) => d.size)
-      .on('end', setWords)
+      .on('end', (placed) => { if (!cancelled) setWords(placed); })
       .start();
+
+    return () => {
+      cancelled = true;
+      layout.stop();
+    };
   }, [wordFrequency, dims]);
 
   if (!wordFrequency?.length) {
