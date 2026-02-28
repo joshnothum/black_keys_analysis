@@ -1,6 +1,6 @@
 import { BpmDisplay } from '../charts/BpmDisplay';
 import { SentimentArcChart } from '../charts/SentimentArcChart';
-import { WordFrequencyChart } from '../charts/WordFrequencyChart';
+import { WordCloud } from '../charts/WordCloud';
 import './TrackDetail.css';
 
 export function TrackDetail({ analysisData, loading, error }) {
@@ -37,7 +37,7 @@ export function TrackDetail({ analysisData, loading, error }) {
     <div className="track-detail">
       <BpmDisplay track={{ ...track, overallSentiment }} />
       <SentimentArcChart verses={verses} />
-      <WordFrequencyChart wordFrequency={wordFrequency} />
+      <WordCloud wordFrequency={wordFrequency} />
     </div>
   );
 }

@@ -1,0 +1,50 @@
+.word-cloud {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+}
+
+.word-cloud-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Each word fades + scales in */
+.cloud-word {
+  opacity: 0;
+  animation: word-appear 0.4s ease forwards;
+  cursor: default;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
+
+.cloud-word:hover {
+  opacity: 1 !important;
+  filter: brightness(1.25);
+}
+
+@keyframes word-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+/* Legend chips in subtitle */
+.chart-subtitle .legend-pos { color: #22c55e; }
+.chart-subtitle .legend-neg { color: #ef4444; }
+.chart-subtitle .legend-neu { color: #94a3b8; }
+
+.word-cloud-empty {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 24px;
+  text-align: center;
+}
