@@ -8,3 +8,4 @@ node_modules/
 client/dist/
 CLAUDE.md
 *.sql
+*.md
