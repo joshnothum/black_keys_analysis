@@ -1,26 +1,63 @@
 .sentiment-arc-chart {
   background: var(--surface);
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: 20px 20px 12px;
   border: 1px solid var(--border);
 }
 
-.chart-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 0.2rem;
+.arc-svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
 }
 
-.chart-subtitle {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin: 0 0 1rem;
+/* Animated stroke — JS sets dasharray/dashoffset, CSS drives the transition */
+.arc-stroke {
+  stroke: var(--accent);
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.chart-wrap {
-  height: 220px;
-  position: relative;
+/* Zero baseline */
+.zero-line {
+  stroke: var(--border);
+  stroke-width: 1px;
+  stroke-dasharray: 4 4;
+}
+
+/* Thin vertical drop from dot to zero line */
+.verse-guide {
+  stroke: var(--border);
+  stroke-width: 1px;
+  stroke-dasharray: 2 3;
+  opacity: 0.5;
+}
+
+/* Verse dots */
+.arc-dot {
+  stroke: var(--bg);
+  stroke-width: 2px;
+  transition: r 0.15s ease;
+  cursor: default;
+}
+.arc-dot--pos { fill: #22c55e; }
+.arc-dot--neg { fill: #ef4444; }
+
+.verse-group:hover .arc-dot { r: 7px; }
+
+/* Axis text */
+.axis-label {
+  fill: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.verse-label {
+  fill: var(--text-muted);
+  font-size: 11px;
+  font-family: inherit;
 }
 
 .chart-empty {
