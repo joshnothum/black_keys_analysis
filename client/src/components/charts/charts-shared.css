@@ -1,0 +1,13 @@
+/* Shared chart header styles used by multiple chart components */
+.chart-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.2rem;
+}
+
+.chart-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
